@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>b2bweb.ai — AI-Powered Web, Built for B2B Growth</title>
 <meta name="description" content="I build AI-powered web growth engines for B2B. Strategy & consultancy for businesses ready to make their website work harder.">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -26,7 +26,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
@@ -51,7 +51,7 @@ nav {
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 0 40px;
-  height: 68px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,11 +60,39 @@ nav {
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .nav-logo img {
-  height: 38px;
+  height: 110px;
   width: auto;
-  mix-blend-mode: screen;
-  filter: brightness(1.1) contrast(1.05);
+  /* Keep gradient icon, invert the dark text to white */
+  filter: brightness(0) invert(1);
+}
+
+/* Override: keep gradient colours on icon by layering */
+.nav-logo-wrap {
+  position: relative;
+  height: 110px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-img-colour {
+  position: absolute;
+  height: 110px;
+  width: auto;
+  /* Only show the coloured icon portion - clip right half */
+  clip-path: inset(0 55% 0 0);
+}
+
+.nav-logo-img-white {
+  height: 110px;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .nav-links {
@@ -75,12 +103,12 @@ nav {
 }
 
 .nav-links a {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--muted);
   text-decoration: none;
   transition: color 0.2s;
-  letter-spacing: 0.2px;
+  letter-spacing: 0;
 }
 
 .nav-links a:hover { color: var(--text); }
@@ -90,7 +118,7 @@ nav {
   color: #000 !important;
   padding: 8px 18px;
   border-radius: 8px;
-  font-family: 'Syne', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
   font-weight: 700 !important;
   font-size: 12px !important;
   letter-spacing: 0.3px;
@@ -119,7 +147,7 @@ section { position: relative; z-index: 1; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 68px;
+  padding-top: 120px;
   overflow: hidden;
 }
 
@@ -161,11 +189,11 @@ section { position: relative; z-index: 1; }
 .hero-pill span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease infinite; }
 
 .hero-h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: clamp(44px, 7vw, 78px);
   font-weight: 800;
   line-height: 1.02;
-  letter-spacing: -3px;
+  letter-spacing: -0.2px;
   margin-bottom: 24px;
   opacity: 0;
   animation: fadeUp 0.7s ease forwards 0.2s;
@@ -182,9 +210,9 @@ section { position: relative; z-index: 1; }
 .hero-sub {
   font-size: 18px;
   color: var(--muted);
-  font-weight: 300;
-  line-height: 1.65;
-  max-width: 560px;
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 580px;
   margin: 0 auto 44px;
   opacity: 0;
   animation: fadeUp 0.7s ease forwards 0.3s;
@@ -206,7 +234,7 @@ section { position: relative; z-index: 1; }
   border: none;
   border-radius: 10px;
   padding: 15px 32px;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -224,7 +252,7 @@ section { position: relative; z-index: 1; }
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 15px 32px;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -250,10 +278,10 @@ section { position: relative; z-index: 1; }
 }
 
 .stat-number {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 32px;
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.2px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -324,10 +352,10 @@ section { position: relative; z-index: 1; }
 }
 
 .about-h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 800;
-  letter-spacing: -1.5px;
+  letter-spacing: -0.3px;
   line-height: 1.1;
   margin-bottom: 20px;
 }
@@ -340,8 +368,8 @@ section { position: relative; z-index: 1; }
 .about-body {
   font-size: 15px;
   color: var(--muted);
-  line-height: 1.75;
-  font-weight: 300;
+  line-height: 1.8;
+  font-weight: 400;
 }
 
 .about-body p + p { margin-top: 14px; }
@@ -413,10 +441,10 @@ section { position: relative; z-index: 1; }
 }
 
 .tool-h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: clamp(30px, 4vw, 46px);
   font-weight: 800;
-  letter-spacing: -1.5px;
+  letter-spacing: -0.3px;
   margin-bottom: 16px;
 }
 
@@ -466,7 +494,7 @@ section { position: relative; z-index: 1; }
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 15px 20px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 15px;
   color: var(--text);
   outline: none;
@@ -482,7 +510,7 @@ section { position: relative; z-index: 1; }
   border: none;
   border-radius: 10px;
   padding: 15px 28px;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -507,7 +535,7 @@ section { position: relative; z-index: 1; }
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px 18px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 13px;
   color: var(--text);
   outline: none;
@@ -557,7 +585,7 @@ section { position: relative; z-index: 1; }
 }
 
 .progress-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -620,7 +648,7 @@ section { position: relative; z-index: 1; }
 .results-url { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
 
 .results-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.5px;
@@ -631,7 +659,7 @@ section { position: relative; z-index: 1; }
 .score-ring .track { fill: none; stroke: var(--border); stroke-width: 5; }
 .score-ring .fill { fill: none; stroke-width: 5; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
 .score-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.score-number { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; line-height: 1; }
+.score-number { font-family: 'Nunito', sans-serif; font-size: 26px; font-weight: 800; line-height: 1; }
 .score-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
 .dimensions {
@@ -652,7 +680,7 @@ section { position: relative; z-index: 1; }
 
 .dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .dim-name { font-size: 11px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-.dim-score { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; }
+.dim-score { font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700; }
 .dim-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
 .dim-fill { height: 100%; border-radius: 2px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); width: 0%; }
 
@@ -681,7 +709,7 @@ section { position: relative; z-index: 1; }
 .chip-unknown { color: var(--warning); border-color: rgba(210,153,34,0.3); background: rgba(210,153,34,0.07); }
 
 .report-content { font-size: 13px; line-height: 1.75; color: #8b949e; }
-.report-content h3 { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); margin: 18px 0 8px; display: flex; align-items: center; gap: 7px; }
+.report-content h3 { font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); margin: 18px 0 8px; display: flex; align-items: center; gap: 7px; }
 .report-content h3:first-child { margin-top: 0; }
 .report-content ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
 .report-content li { padding-left: 14px; position: relative; }
@@ -701,7 +729,7 @@ section { position: relative; z-index: 1; }
   flex-wrap: wrap;
 }
 
-.results-cta-text strong { display: block; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.results-cta-text strong { display: block; font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
 .results-cta-text span { font-size: 13px; color: var(--muted); }
 
 /* ── CTA SECTION ── */
@@ -726,11 +754,11 @@ section { position: relative; z-index: 1; }
 }
 
 .cta-h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 800;
-  letter-spacing: -2px;
-  line-height: 1.05;
+  letter-spacing: -0.2px;
+  line-height: 1.1;
   margin-bottom: 20px;
 }
 
@@ -745,8 +773,8 @@ section { position: relative; z-index: 1; }
 .cta-body {
   font-size: 16px;
   color: var(--muted);
-  font-weight: 300;
-  line-height: 1.65;
+  font-weight: 400;
+  line-height: 1.7;
   margin-bottom: 36px;
 }
 
@@ -769,10 +797,29 @@ footer {
   z-index: 1;
 }
 
-.footer-logo img {
-  height: 30px;
-  mix-blend-mode: screen;
-  filter: brightness(1.1) contrast(1.05);
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo-wrap {
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo-colour {
+  position: absolute;
+  height: 60px;
+  width: auto;
+  clip-path: inset(0 55% 0 0);
+}
+
+.footer-logo-white {
+  height: 60px;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .footer-copy {
@@ -823,7 +870,10 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="/images/logo.png" alt="b2bweb.ai">
+    <div class="nav-logo-wrap">
+      <img class="nav-logo-img-colour" src="/images/logo.png" alt="">
+      <img class="nav-logo-img-white" src="/images/logo.png" alt="b2bweb.ai">
+    </div>
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -1028,7 +1078,10 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <img src="/images/logo.png" alt="b2bweb.ai">
+    <div class="footer-logo-wrap">
+      <img class="footer-logo-colour" src="/images/logo.png" alt="">
+      <img class="footer-logo-white" src="/images/logo.png" alt="b2bweb.ai">
+    </div>
   </div>
   <div class="footer-copy">© 2026 b2bweb.ai</div>
   <div class="footer-tagline">AI-Powered Web, Built for B2B Growth</div>
