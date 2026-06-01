@@ -34,13 +34,11 @@ body {
 }
 
 /* ── Grid background ── */
-.grid-bg {
+#bg-canvas {
   position: fixed;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(0,229,160,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,229,160,0.025) 1px, transparent 1px);
-  background-size: 48px 48px;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
 }
@@ -51,7 +49,7 @@ nav {
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 0 40px;
-  height: 120px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,39 +58,13 @@ nav {
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-logo img {
-  height: 110px;
-  width: auto;
-  /* Keep gradient icon, invert the dark text to white */
-  filter: brightness(0) invert(1);
-}
-
-/* Override: keep gradient colours on icon by layering */
-.nav-logo-wrap {
-  position: relative;
-  height: 110px;
-  display: flex;
-  align-items: center;
-}
-
-.nav-logo-img-colour {
-  position: absolute;
-  height: 110px;
-  width: auto;
-  /* Only show the coloured icon portion - clip right half */
-  clip-path: inset(0 55% 0 0);
-}
-
-.nav-logo-img-white {
-  height: 110px;
-  width: auto;
-  filter: brightness(0) invert(1);
+.nav-logo a {
+  text-decoration: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #ffffff;
 }
 
 .nav-links {
@@ -147,7 +119,7 @@ section { position: relative; z-index: 1; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 72px;
   overflow: hidden;
 }
 
@@ -164,7 +136,7 @@ section { position: relative; z-index: 1; }
 }
 
 .hero-inner {
-  padding: 80px 0 100px;
+  padding: 80px 0 48px;
   text-align: center;
 }
 
@@ -223,7 +195,7 @@ section { position: relative; z-index: 1; }
   gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 64px;
+  margin-bottom: 0;
   opacity: 0;
   animation: fadeUp 0.7s ease forwards 0.4s;
 }
@@ -296,32 +268,7 @@ section { position: relative; z-index: 1; }
 }
 
 /* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  opacity: 0;
-  animation: fadeUp 0.7s ease forwards 1s;
-}
 
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scrollPulse 2s ease infinite;
-}
-
-.scroll-text {
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
 
 /* ── ABOUT ── */
 #about {
@@ -338,8 +285,13 @@ section { position: relative; z-index: 1; }
 
 @media(max-width: 720px) {
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  nav { padding: 0 20px; }
+  nav { padding: 0 20px; justify-content: center; }
   .nav-links { display: none; }
+  .nav-logo a { font-size: 20px; }
+  .scroll-indicator { left: 50%; transform: translateX(-50%); }
+  .hero-stats { margin-bottom: 0; }
+  footer { justify-content: center; text-align: center; }
+  .footer-logo { justify-content: center; }
 }
 
 .about-label {
@@ -778,11 +730,7 @@ section { position: relative; z-index: 1; }
   margin-bottom: 36px;
 }
 
-.cta-note {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 14px;
-}
+
 
 /* ── FOOTER ── */
 footer {
@@ -797,29 +745,13 @@ footer {
   z-index: 1;
 }
 
-.footer-logo {
-  display: flex;
-  align-items: center;
-}
-
-.footer-logo-wrap {
-  position: relative;
-  height: 60px;
-  display: flex;
-  align-items: center;
-}
-
-.footer-logo-colour {
-  position: absolute;
-  height: 60px;
-  width: auto;
-  clip-path: inset(0 55% 0 0);
-}
-
-.footer-logo-white {
-  height: 60px;
-  width: auto;
-  filter: brightness(0) invert(1);
+.footer-logo a {
+  text-decoration: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #ffffff;
 }
 
 .footer-copy {
@@ -827,11 +759,7 @@ footer {
   color: var(--muted);
 }
 
-.footer-tagline {
-  font-size: 12px;
-  color: var(--muted);
-  font-style: italic;
-}
+
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
@@ -844,11 +772,6 @@ footer {
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(1.1); }
 }
 
 .reveal {
@@ -865,20 +788,17 @@ footer {
 </head>
 <body>
 
-<div class="grid-bg"></div>
+<canvas id="bg-canvas"></canvas>
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <div class="nav-logo-wrap">
-      <img class="nav-logo-img-colour" src="/images/logo.png" alt="">
-      <img class="nav-logo-img-white" src="/images/logo.png" alt="b2bweb.ai">
-    </div>
+    <a href="/">b2bweb.ai</a>
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#tool">Free Scanner</a></li>
-    <li><a href="#cta" class="nav-cta">Book a Call</a></li>
+    <li><a href="https://calendly.com/williammarxen/30min" target="_blank" class="nav-cta">Book a Call</a></li>
   </ul>
 </nav>
 
@@ -887,16 +807,15 @@ footer {
   <div class="hero-glow"></div>
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-pill"><span></span> B2B Web & AI Consultancy</div>
+      <div class="hero-pill"><span></span> B2B Web AI Consultancy</div>
       <h1 class="hero-h1">
-        I build AI-powered<br>
-        <span class="line2">web growth engines</span><br>
-        for B2B.
+        Building AI-powered<br>
+        <span class="line2">web growth engines for B2B</span>
       </h1>
       <p class="hero-sub">Your website should be your hardest-working sales asset. I help B2B businesses make that happen — through smart AI strategy, intelligent web and measurable growth.</p>
       <div class="hero-actions">
         <a href="#tool" class="btn-primary">Scan Your Website Free →</a>
-        <a href="#cta" class="btn-ghost">Book a Strategy Call</a>
+        <a href="https://calendly.com/williammarxen/30min" target="_blank" class="btn-ghost">Book a Strategy Call</a>
       </div>
       <div class="hero-stats">
         <div class="stat">
@@ -914,10 +833,7 @@ footer {
       </div>
     </div>
   </div>
-  <div class="scroll-indicator">
-    <span class="scroll-text">Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
+
 </section>
 
 <!-- ABOUT -->
@@ -1054,7 +970,7 @@ footer {
               <strong>Want to act on these insights?</strong>
               <span>Book a free 30-minute strategy call and we'll map out your AI growth plan.</span>
             </div>
-            <a href="#cta" class="btn-primary">Book Free Call →</a>
+            <a href="https://calendly.com/williammarxen/30min" target="_blank" class="btn-primary">Book Free Call →</a>
           </div>
         </div>
       </div>
@@ -1069,8 +985,7 @@ footer {
       <div class="cta-label">Let's Talk</div>
       <h2 class="cta-h2">Ready to build your<br><em>AI growth engine?</em></h2>
       <p class="cta-body">Book a free 30-minute strategy call. We'll look at your current web presence, identify your biggest AI opportunities, and map out a practical path to growth — no obligation, no fluff.</p>
-      <a href="mailto:hello@b2bweb.ai" class="btn-primary">Book a Free Strategy Call →</a>
-      <p class="cta-note">Or email directly: <a href="mailto:hello@b2bweb.ai" style="color:var(--accent);text-decoration:none;">hello@b2bweb.ai</a></p>
+      <a href="https://calendly.com/williammarxen/30min" target="_blank" class="btn-primary">Book a Free Strategy Call →</a>
     </div>
   </div>
 </section>
@@ -1078,13 +993,9 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <div class="footer-logo-wrap">
-      <img class="footer-logo-colour" src="/images/logo.png" alt="">
-      <img class="footer-logo-white" src="/images/logo.png" alt="b2bweb.ai">
-    </div>
+    <a href="/">b2bweb.ai</a>
   </div>
   <div class="footer-copy">© 2026 b2bweb.ai</div>
-  <div class="footer-tagline">AI-Powered Web, Built for B2B Growth</div>
 </footer>
 
 <script>
@@ -1237,6 +1148,168 @@ function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('url-input').addEventListener('keydown', e => { if (e.key === 'Enter') startScan(); });
 });
+</script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes, pulses, dataStreams;
+  const ACCENT = '0,229,160';
+  const BLUE = '14,165,233';
+  const GRID = 48;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  // Network nodes
+  function initNodes() {
+    nodes = [];
+    const count = Math.floor((W * H) / 28000);
+    for (let i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
+        r: Math.random() * 1.5 + 0.8,
+        opacity: Math.random() * 0.4 + 0.1,
+        color: Math.random() > 0.5 ? ACCENT : BLUE
+      });
+    }
+  }
+
+  // Pulse rings that expand from random nodes
+  pulses = [];
+  function spawnPulse() {
+    if (nodes && nodes.length) {
+      const n = nodes[Math.floor(Math.random() * nodes.length)];
+      pulses.push({ x: n.x, y: n.y, r: 0, maxR: 60 + Math.random() * 40, opacity: 0.5,
+        color: Math.random() > 0.5 ? ACCENT : BLUE });
+    }
+  }
+
+  // Data streams — short moving dashes along lines
+  dataStreams = [];
+  function spawnStream() {
+    if (nodes && nodes.length > 1) {
+      const a = nodes[Math.floor(Math.random() * nodes.length)];
+      const b = nodes[Math.floor(Math.random() * nodes.length)];
+      const dist = Math.hypot(b.x - a.x, b.y - a.y);
+      if (dist < 180 && dist > 40) {
+        dataStreams.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, t: 0, speed: 0.008 + Math.random() * 0.006,
+          color: Math.random() > 0.5 ? ACCENT : BLUE });
+      }
+    }
+  }
+
+  function drawGrid() {
+    ctx.strokeStyle = `rgba(${ACCENT},0.025)`;
+    ctx.lineWidth = 0.5;
+    for (let x = 0; x < W; x += GRID) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+    }
+    for (let y = 0; y < H; y += GRID) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+  }
+
+  function drawNodes() {
+    nodes.forEach(n => {
+      // Move
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+
+      // Draw node dot
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${n.color},${n.opacity})`;
+      ctx.fill();
+    });
+  }
+
+  function drawEdges() {
+    const maxDist = 140;
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[j].x - nodes[i].x;
+        const dy = nodes[j].y - nodes[i].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.12;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(${ACCENT},${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function drawPulses() {
+    pulses = pulses.filter(p => p.opacity > 0.01);
+    pulses.forEach(p => {
+      p.r += 0.6;
+      p.opacity *= 0.97;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(${p.color},${p.opacity * 0.4})`;
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    });
+  }
+
+  function drawStreams() {
+    dataStreams = dataStreams.filter(s => s.t <= 1);
+    dataStreams.forEach(s => {
+      s.t += s.speed;
+      const x = s.ax + (s.bx - s.ax) * s.t;
+      const y = s.ay + (s.by - s.ay) * s.t;
+      const tail = Math.max(0, s.t - 0.12);
+      const tx = s.ax + (s.bx - s.ax) * tail;
+      const ty = s.ay + (s.by - s.ay) * tail;
+      const alpha = Math.sin(s.t * Math.PI) * 0.55;
+      ctx.beginPath();
+      ctx.moveTo(tx, ty);
+      ctx.lineTo(x, y);
+      ctx.strokeStyle = `rgba(${s.color},${alpha})`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      // Leading dot
+      ctx.beginPath();
+      ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${s.color},${alpha * 1.5})`;
+      ctx.fill();
+    });
+  }
+
+  let frame = 0;
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    drawGrid();
+    drawEdges();
+    drawNodes();
+    drawPulses();
+    drawStreams();
+
+    frame++;
+    if (frame % 90 === 0) spawnPulse();
+    if (frame % 40 === 0) spawnStream();
+
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', () => { resize(); initNodes(); });
+  resize();
+  initNodes();
+  spawnPulse();
+  loop();
+})();
 </script>
 </body>
 </html>
