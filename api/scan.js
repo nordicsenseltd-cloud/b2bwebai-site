@@ -57,7 +57,7 @@ Rules: overallScore 20-85, all dimension scores 10-90, techStack 4-8 realistic t
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-5',
         max_tokens: 1500,
         messages: [{ role: 'user', content: prompt }]
       })
